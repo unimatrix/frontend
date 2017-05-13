@@ -53,7 +53,7 @@ Of course you have to add some things in your `config/app.php`
             ]
         ],
         'cookie' => [
-            'message' => 'Our website uses cookies to improve your experience. We'll assume you're ok with this, by navigating further.',
+            'message' => 'Our website uses cookies to improve your experience. We\'ll assume you\'re ok with this, by navigating further.',
             'accept' => 'I agree',
             'details' => 'More details',
             'page' => '/cookies',
