@@ -44,9 +44,9 @@ Of course you have to add some things in your `config/app.php`
         'seo' => [
             'site' => 'Website.tld',
             'theme' => '#ffffff',
-            'title' => __('Website Title'),
-            'keywords' => __('website, title'),
-            'description' => __('The website description.'),
+            'title' => 'Website Title',
+            'keywords' => 'website, title',
+            'description' => 'The website description.',
             'publishers' => [
                 'facebook' => '1111111111111111',
                 'google' => 'https://plus.google.com/Website',
