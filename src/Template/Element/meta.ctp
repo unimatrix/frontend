@@ -1,7 +1,7 @@
 <?php
 
 // assign seo defaults
-$this->element('Unimatrix.Frontend/seo');
+$this->element('Unimatrix/Frontend.seo');
 
 // all these can be modified through $this->assign('... from template views
 $site = $this->fetch('site') ? $this->fetch('site') : ($this->fetch('seo_site') ? $this->fetch('seo_site') : 'Untitled Project');

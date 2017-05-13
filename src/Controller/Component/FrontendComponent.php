@@ -2,9 +2,7 @@
 
 namespace Unimatrix\Frontend\Controller\Component;
 
-use Cake\Event\Event;
 use Cake\Core\Configure;
-use Cake\I18n\FrozenTime;
 use Cake\Controller\Component;
 
 /**
