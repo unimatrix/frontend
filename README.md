@@ -34,7 +34,7 @@ Of course you have to add some things in your `config/app.php`
      *
      * - security - Enables security modules, if ssl is set to true frontend wont load without https
      * - seo - Default SEO values (can be overwritten on a template basis), publishers.facebook should be appid
-     * - cookie - The path to the (mandatory by EU) cookie page
+     * - cookie - The default info for the (mandatory by EU) cookie message
      */
     'Frontend' => [
         'security' => [
@@ -54,8 +54,8 @@ Of course you have to add some things in your `config/app.php`
         ],
         'cookie' => [
             'message' => 'Our website uses cookies to improve your experience. We'll assume you're ok with this, by navigating further.',
-		    'accept' => 'I agree',
-		    'details' => 'More details',
+            'accept' => 'I agree',
+            'details' => 'More details',
             'page' => '/cookies',
         ]
     ],
