@@ -28,7 +28,7 @@ use Cake\Utility\Text;
  * ]);
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 class ObfuscateHelper extends Helper {
     // load html and url helpers

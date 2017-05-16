@@ -3,7 +3,7 @@
  * Will create the notice html for your cookie policy
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 Cookies.policy = function() { 'use strict';
 	var store = {

@@ -64,7 +64,7 @@ use Cake\I18n\Time;
  * --------------------------------------------------
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 class SitemapComponent extends Component
 {

@@ -2,7 +2,7 @@
  * Frontend
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 var dump = function(what) { 'use strict';
     if(typeof console != 'undefined')
@@ -92,6 +92,7 @@ var Frontend = function() { 'use strict';
 
     // init
     }, __construct = function() {
+        // copyright
         dump("+-------------------------------------------+");
         dump('| Unimatrix Venture Digital Platform System | ');
         dump('| version '+ store.version +' | http://venture.unimatrix.ro |');
@@ -118,4 +119,4 @@ var Frontend = function() { 'use strict';
 }();
 
 // init frontend on ready
-$(document).ready(Frontend.init);
+$(Frontend.init);

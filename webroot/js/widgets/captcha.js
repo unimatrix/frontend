@@ -2,7 +2,7 @@
  * Captcha widget
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 if(typeof Widgets === 'undefined') var Widgets = {};
 Widgets.captcha = function() { 'use strict';
@@ -43,4 +43,4 @@ var GoogleRecaptchaOnLoad = function() {
 };
 
 // init widget on ready
-$(document).ready(Widgets.captcha.init);
+$(Widgets.captcha.init);

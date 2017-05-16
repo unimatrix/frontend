@@ -11,7 +11,7 @@ use Cake\Controller\Component;
  * it also handles some custom frontend logic and request filtering
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 class FrontendComponent extends Component
 {

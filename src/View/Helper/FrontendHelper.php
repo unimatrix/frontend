@@ -11,7 +11,7 @@ use Cake\I18n\I18n;
  * it also handles some custom frontend logic and template correction
  *
  * @author Flavius
- * @version 0.1
+ * @version 1.0
  */
 class FrontendHelper extends Helper {
     // load other helpers
