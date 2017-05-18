@@ -2,20 +2,11 @@
  * Captcha widget
  *
  * @author Flavius
- * @version 1.0
+ * @version 1.1
  */
 if(typeof Widgets === 'undefined') var Widgets = {};
 Widgets.captcha = function() { 'use strict';
     var store = {
-        js: {}
-
-    // load javascript dynamically
-    }, _load = function(js) {
-        if(store.js[js] == true)
-            return true;
-
-        $('body').append('<script type="text/javascript" src="'+ js +'" />');
-        return store.js[js] = true;
 
     // render each captcha
     }, render = function() {
@@ -27,7 +18,7 @@ Widgets.captcha = function() { 'use strict';
 
     // init
     }, __construct = function() {
-        _load('https://www.google.com/recaptcha/api.js?onload=GoogleRecaptchaOnLoad&render=explicit');
+        Frontend.load('https://www.google.com/recaptcha/api.js?onload=GoogleRecaptchaOnLoad&render=explicit');
     };
 
     // public, yay
