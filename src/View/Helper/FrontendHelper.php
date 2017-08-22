@@ -32,7 +32,7 @@ class FrontendHelper extends Helper {
         ]]);
 
         // send locale and language to views
-        $locale = I18n::locale();
+        $locale = I18n::getLocale();
         $this->getView()->set('locale', $locale);
         $this->getView()->set('language', explode('_', $locale)[0]);
     }
