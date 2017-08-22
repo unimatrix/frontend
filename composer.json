@@ -1,12 +1,12 @@
 {
     "name": "unimatrix/frontend",
-    "description": "Frontend for CakePHP 3.4",
+    "description": "Frontend for CakePHP 3.5",
     "type": "cakephp-plugin",
-    "homepage": "http://venture.unimatrix.ro",
+    "homepage": "https://venture.unimatrix.ro",
     "license": "MIT",
     "require": {
         "php": ">=7.0.0",
-        "cakephp/cakephp": "~3.4",
+        "cakephp/cakephp": "~3.5",
         "unimatrix/cake": "~1.0"
     },
     "autoload": {

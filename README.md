@@ -4,11 +4,11 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/unimatrix/frontend.svg?style=flat-square)](https://packagist.org/packages/unimatrix/frontend/stats)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/unimatrix/frontend/master/LICENSE)
 
-Frontend for CakePHP 3.4
+Frontend for CakePHP 3.5
 
 ## Requirements
 * PHP >= 7
-* CakePHP >= 3.4
+* CakePHP >= 3.5
 
 ## Installation
 

@@ -16,7 +16,6 @@ if(typeof DEV_ENV == 'undefined') DEV_ENV = true;
 // start frontend
 var Frontend = function() { 'use strict';
     var store = {
-    	version: '1.0',
         js: {}
 
     // overwrite ajax settings
@@ -92,12 +91,6 @@ var Frontend = function() { 'use strict';
 
     // init
     }, __construct = function() {
-        // copyright
-        dump("+-------------------------------------------+");
-        dump('| Unimatrix Venture Digital Platform System | ');
-        dump('| version '+ store.version +' | http://venture.unimatrix.ro |');
-        dump("+-------------------------------------------+");
-
         // preload images
         _preload(typeof Preload === 'undefined' ? [] : Preload);
 
