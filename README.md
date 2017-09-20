@@ -22,7 +22,7 @@ composer require unimatrix/frontend:~1.0
 
 Don't forget to add it to bootstrap
 ```
-Plugin::load('Unimatrix/Frontend');
+Plugin::load('Unimatrix/Frontend', ['bootstrap' => true]);
 ```
 
 ## Configuration
