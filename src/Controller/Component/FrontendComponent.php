@@ -27,10 +27,6 @@ class FrontendComponent extends Component
             $this->getController()->loadComponent('Security');
             if(Configure::read('Frontend.security.ssl'))
                 $this->getController()->Security->requireSecure();
-            $this->getController()->loadComponent('Csrf', [
-                'httpOnly' => true,
-                'secure' => env('HTTPS')
-            ]);
         }
 
         // load required components
