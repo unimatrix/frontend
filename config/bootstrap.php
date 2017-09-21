@@ -4,8 +4,8 @@ use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 
-// is backend or debug_kit? don't continue
-if(Configure::read('Backend') && explode('/', env('REQUEST_URI'))[1] === 'backend'
+// is cli or backend or debug_kit? don't continue
+if(PHP_SAPI === 'cli' || Configure::read('Backend') && explode('/', env('REQUEST_URI'))[1] === 'backend'
     || explode('/', env('REQUEST_URI'))[1] === 'debug_kit')
         return;
 
