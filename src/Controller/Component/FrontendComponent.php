@@ -2,6 +2,7 @@
 
 namespace Unimatrix\Frontend\Controller\Component;
 
+use Cake\I18n\I18n;
 use Cake\Core\Configure;
 use Cake\Controller\Component;
 
@@ -11,7 +12,7 @@ use Cake\Controller\Component;
  * it also handles some custom frontend logic and request filtering
  *
  * @author Flavius
- * @version 1.0
+ * @version 1.1
  */
 class FrontendComponent extends Component
 {
@@ -22,15 +23,23 @@ class FrontendComponent extends Component
     public function initialize(array $config) {
         parent::initialize($config);
 
+        // we need these
+        $controller = $this->getController();
+        $session = $controller->request->getSession();
+
         // load security
         if(Configure::read('Frontend.security.enabled')) {
-            $this->getController()->loadComponent('Security');
+            $controller->loadComponent('Security');
             if(Configure::read('Frontend.security.ssl'))
-                $this->getController()->Security->requireSecure();
+                $controller->Security->requireSecure();
         }
 
+        // set locale based on session
+        if($session->check('App.locale'))
+            I18n::setLocale($session->read('App.locale'));
+
         // load required components
-        $this->getController()->loadComponent('Unimatrix/Frontend.Captcha');
-        $this->getController()->loadComponent('Unimatrix/Frontend.Sitemap');
+        $controller->loadComponent('Unimatrix/Frontend.Captcha');
+        $controller->loadComponent('Unimatrix/Frontend.Sitemap');
     }
 }
