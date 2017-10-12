@@ -6,7 +6,7 @@ use Cake\Core\Configure;
 use Cake\Controller\Component;
 
 /**
- * Admin Component
+ * Frontend Component
  * This component loads all other necesary stuff for the frontend,
  * it also handles some custom frontend logic and request filtering
  *
