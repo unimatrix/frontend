@@ -9,9 +9,13 @@ use Unimatrix\Cake\Error\Middleware\EmailErrorHandlerMiddleware;
 // load Unimatrix Cake
 Plugin::load('Unimatrix/Cake');
 
+// get url path
+$url = explode('/', env('REQUEST_URI'));
+
 // is cli or backend or debug_kit? don't continue
-if(PHP_SAPI === 'cli' || Configure::read('Backend') && explode('/', env('REQUEST_URI'))[1] === 'backend'
-    || explode('/', env('REQUEST_URI'))[1] === 'debug_kit')
+if(PHP_SAPI === 'cli'
+    || (Configure::read('Backend') && $url[1] === 'backend')
+    || $url[1] === 'debug_kit' || $url[1] === 'debug-kit')
         return;
 
 // attach middleware
