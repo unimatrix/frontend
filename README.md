@@ -39,7 +39,11 @@ Of course you have to add some things in your `config/app.php`
     'Frontend' => [
         'security' => [
             'enabled' => true,
-            'ssl' => false
+            'ssl' => false,
+            'exceptions' => [ // skip CSRF verifications for these requests
+                ['controller' => 'API', 'action' => 'batch'], // skip the batch action from the API controller
+                ['controller' => 'Amazon'] // skip the whole amazon controller
+            ]
         ],
         'seo' => [
             'site' => 'Website.tld',
