@@ -17,9 +17,10 @@ use RuntimeException;
  * ---------------------------------------------------------------------------------
  * echo <?= $this->Form->control('captcha', ['type' => 'captcha']); ?>
  * other options you can pass are: (these are the defaults)
- *    'theme' => 'light', // either light or dark
+ *    'hl' => 'en', // English locale
  *    'size' => 'normal' // either normal or compact
- *    'contingent' => 'image', // either image or audio
+ *    'theme' => 'light', // either light or dark
+ *    'render' => 'image', // either image or audio
  *
  * Important: Don't forget about the configuration
  * --------------------------------------------------------
@@ -29,7 +30,7 @@ use RuntimeException;
  * ],
  *
  * @author Flavius
- * @version 1.0
+ * @version 1.1
  */
 class CaptchaWidget extends BasicWidget
 {
@@ -74,9 +75,10 @@ class CaptchaWidget extends BasicWidget
         // defaults
         $data += [
             'name' => '',
-            'theme' => 'light',
+            'hl' => 'en',
             'size' => 'normal',
-            'contingent' => 'image',
+            'theme' => 'light',
+            'render' => 'image',
             'templateVars' => []
         ];
 
@@ -84,9 +86,9 @@ class CaptchaWidget extends BasicWidget
         $this->require($data['view']);
         unset($data['view']);
 
-        // contingent is actually type
-        $data['type'] = $data['contingent'];
-        unset($data['contingent']);
+        // render is actually type
+        $data['type'] = $data['render'];
+        unset($data['render']);
 
         // add the site key
         $data['sitekey'] = Configure::read('Captcha.key');
