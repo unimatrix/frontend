@@ -3,8 +3,8 @@
 use Cake\Core\Plugin;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
-use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Unimatrix\Cake\Error\Middleware\EmailErrorHandlerMiddleware;
+use Unimatrix\Frontend\Http\Middleware\CsrfProtectionMiddleware;
 
 // load Unimatrix Cake
 Plugin::load('Unimatrix/Cake');
@@ -25,9 +25,5 @@ EventManager::instance()->on('Server.buildMiddleware', function ($event, $queue)
 
     // CsrfProtectionMiddleware
     if(Configure::read('Frontend.security.enabled'))
-        $queue->add(new CsrfProtectionMiddleware([
-            'httpOnly' => true,
-            'secure' => env('HTTPS'),
-            'cookieName' => 'frontend_csrf_token',
-        ]));
+        $queue->add(CsrfProtectionMiddleware::class);
 });

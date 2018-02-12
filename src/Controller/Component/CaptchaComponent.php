@@ -53,7 +53,7 @@ class CaptchaComponent extends Component
         $recaptcha = $this->requestRecaptcha();
         if($recaptcha) {
             // perform the request to google
-            $http = new Client();
+            $http = new Client(['ssl_verify_peer' => false]);
             $response = $http->post($this->_api, [
                 'secret' => $secret,
                 'response' => $recaptcha,
