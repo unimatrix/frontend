@@ -16,7 +16,7 @@ use Cake\Utility\Text;
  */
 class FrontendHelper extends Helper {
     // load other helpers
-    public $helpers = ['Text', 'Html', 'Unimatrix/Cake.Minify'];
+    public $helpers = ['Text', 'Html', 'Minify'];
 
     // default config
     protected $_defaultConfig = [
@@ -25,6 +25,13 @@ class FrontendHelper extends Helper {
                 'html' => true,
                 'css' => true,
                 'js' => true
+            ],
+            'config' => [
+                'html' => [
+                    'doRemoveOmittedHtmlTags' => false
+                ],
+                'css' => [],
+                'js' => []
             ],
             'paths' => [
                 'css' => '/cache-css',
