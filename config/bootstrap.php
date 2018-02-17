@@ -3,6 +3,7 @@
 use Cake\Core\Plugin;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
+use Cake\Http\ServerRequestFactory;
 use Unimatrix\Cake\Error\Middleware\EmailErrorHandlerMiddleware;
 use Unimatrix\Frontend\Http\Middleware\CsrfProtectionMiddleware;
 
@@ -10,12 +11,12 @@ use Unimatrix\Frontend\Http\Middleware\CsrfProtectionMiddleware;
 Plugin::load('Unimatrix/Cake');
 
 // get url path
-$url = explode('/', env('REQUEST_URI'));
+$url = explode('/', ServerRequestFactory::fromGlobals()->url);
 
 // is cli or backend or debug_kit? don't continue
 if(PHP_SAPI === 'cli'
-    || (Configure::read('Backend') && $url[1] === 'backend')
-    || $url[1] === 'debug_kit' || $url[1] === 'debug-kit')
+    || (Configure::read('Backend') && $url[0] === 'backend')
+    || $url[0] === 'debug_kit' || $url[0] === 'debug-kit')
         return;
 
 // attach middleware
