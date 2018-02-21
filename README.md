@@ -52,15 +52,20 @@ Of course you have to add some things in your `config/app.php`
             'keywords' => 'website, title',
             'description' => 'The website description.',
             'publishers' => [
-                'facebook' => '1111111111111111',
+                'facebook' => '1111111111111111', // app id
                 'google' => 'https://plus.google.com/Website',
             ]
         ],
         'cookie' => [
-            'message' => 'Our website uses cookies to improve your experience. We\'ll assume you\'re ok with this, by navigating further.',
-            'accept' => 'I agree',
-            'details' => 'More details',
-            'page' => '/cookies',
+            'url' => '/cookies', // or array ['controller' => 'Pages', 'action' => 'cookies']
         ]
+    ],
+
+    /**
+     * Google reCaptcha
+     */
+    'Captcha' => [
+        'key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        'secret' => 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
     ],
  ```

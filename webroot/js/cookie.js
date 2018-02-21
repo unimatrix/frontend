@@ -3,14 +3,10 @@
  * Will create the notice html for your cookie policy
  *
  * @author Flavius
- * @version 1.1
+ * @version 1.2
  */
 Cookies.policy = function() { 'use strict';
     var store = {
-        message: "Our website uses cookies to improve your experience. We'll assume you're ok with this, by navigating further.",
-        accept: "I agree",
-        details: "More details",
-        page: "/cookies",
         parent: $('body')
 
     // html5 sticky footer
@@ -21,7 +17,7 @@ Cookies.policy = function() { 'use strict';
                 '<span>' + store.message + '</span>' +
                 '<div>' +
                     '<a href="javascript:void(0);">' + store.accept + '</a>' +
-                    '<a href="' + store.page + '" target="_blank" rel="nofollow">' + store.details + '</a>' +
+                    '<a href="' + store.url + '" target="_blank" rel="nofollow">' + store.details + '</a>' +
                 '</div>' +
             '</div>' +
         '</div>';
@@ -52,8 +48,8 @@ Cookies.policy = function() { 'use strict';
         // set configuration
         store = $.extend({}, store, cfg);
 
-        // build cookies
-        if(Cookies.get('cookie-accept') !== '1')
+        // build cookie if all conditions are met
+        if(store.url && store.message && store.accept && store.details && Cookies.get('cookie-accept') !== '1')
             _build();
     };
 

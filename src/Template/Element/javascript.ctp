@@ -6,7 +6,12 @@ use Cake\Core\Configure;
 $this->Minify->inline('script', "
     var WEBROOT = \"{$this->Url->build('/', true)}\";
     var DEV_ENV = ". (Configure::read('debug') ? 'true' : 'false') .";
-    var EU_COOKIE = " . json_encode(Configure::read('Frontend.cookie')) . ";
+    var EU_COOKIE = " . (Configure::check('Frontend.cookie') ? json_encode([
+        'url' => $this->Url->build(Configure::read('Frontend.cookie.url')),
+        'message' => __d('Unimatrix/frontend', "Our website uses cookies to improve your experience. We'll assume you're ok with this, by navigating further."),
+        'accept' => __d('Unimatrix/frontend', "I agree"),
+        'details' => __d('Unimatrix/frontend', "More details")
+    ]) : 'false') . ";
 ");
 
 // external
