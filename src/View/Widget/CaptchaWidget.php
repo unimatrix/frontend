@@ -24,13 +24,15 @@ use RuntimeException;
  *
  * Important: Don't forget about the configuration
  * --------------------------------------------------------
- * 'Captcha' => [
- *     'key' => 'your site key',
- *     'secret' => 'your secret key'
+ * 'Frontend' => [
+ *     'captcha' => [
+ *         'key' => 'your site key',
+ *         'secret' => 'your secret key'
+ *     ]
  * ],
  *
  * @author Flavius
- * @version 1.1
+ * @version 1.2
  */
 class CaptchaWidget extends BasicWidget
 {
@@ -91,7 +93,7 @@ class CaptchaWidget extends BasicWidget
         unset($data['render']);
 
         // add the site key
-        $data['sitekey'] = Configure::read('Captcha.key');
+        $data['sitekey'] = Configure::read('Frontend.captcha.key');
         if(!$data['sitekey'])
             throw new RuntimeException("Captcha Widget: Error in configuration, site key not found");
 

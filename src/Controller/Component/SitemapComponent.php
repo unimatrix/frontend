@@ -64,20 +64,20 @@ use Cake\I18n\Time;
  * --------------------------------------------------
  *
  * @author Flavius
- * @version 1.0
+ * @version 1.1
  */
 class SitemapComponent extends Component
 {
     // Load request handler
     public $components = ['RequestHandler'];
 
-    // the exclusion array
-    public $exclude = [];
+    // default config
+    protected $_defaultConfig = [
+        'exclude' => []
+    ];
 
-    // url storage
+    // url storage & root
     protected $_url = [];
-
-    // sitemap root
     protected $_root = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="%s"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>';
 
     /**
@@ -88,16 +88,12 @@ class SitemapComponent extends Component
         // respond as xml
         $this->RequestHandler->respondAs('xml');
 
-        // start xml
+        // start xml & build from routes
         $xml = Xml::build(sprintf($this->_root, $this->_path('Unimatrix/Frontend.xsl/sitemap.xsl')));
-
-        // get urls from router
         $this->_router();
 
-        // append urls
+        // append urls & return
         $this->_append($xml, Xml::fromArray(['urlset' => ['url' => $this->_url]]));
-
-        // return xml
         return $xml->asXML();
     }
 
@@ -133,7 +129,7 @@ class SitemapComponent extends Component
             }
 
             // in exclude array?
-            if(in_array($route->template, $this->exclude))
+            if(in_array($route->template, $this->_config['exclude']))
                 continue;
 
             // calculate lastmod

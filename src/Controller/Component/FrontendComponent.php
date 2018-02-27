@@ -10,7 +10,7 @@ use Cake\Controller\Component;
  * Frontend Component
  * This component loads all other necesary stuff for the frontend,
  * it also handles some custom frontend logic and request filtering
- * 
+ *
  * To use switch between languages use the following in your controller:
  * ---------------------------------------------------------------------
  *     public function ro() {
@@ -24,10 +24,17 @@ use Cake\Controller\Component;
  * ---------------------------------------------------------------------
  *
  * @author Flavius
- * @version 1.1
+ * @version 1.2
  */
 class FrontendComponent extends Component
 {
+    // default config
+    protected $_defaultConfig = [
+        'Sitemap' => [
+            'exclude' => []
+        ]
+    ];
+
     /**
      * {@inheritDoc}
      * @see \Cake\Controller\Component::initialize()
@@ -52,6 +59,6 @@ class FrontendComponent extends Component
 
         // load required components
         $controller->loadComponent('Unimatrix/Frontend.Captcha');
-        $controller->loadComponent('Unimatrix/Frontend.Sitemap');
+        $controller->loadComponent('Unimatrix/Frontend.Sitemap', $this->_config['Sitemap']);
     }
 }

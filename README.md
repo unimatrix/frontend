@@ -56,16 +56,12 @@ Of course you have to add some things in your `config/app.php`
                 'google' => 'https://plus.google.com/Website',
             ]
         ],
+        'captcha' => [ // google recaptcha widget
+            'key' => 'your site key',
+            'secret' => 'your secret key'
+        ],
         'cookie' => [
             'url' => '/cookies', // or array ['controller' => 'Pages', 'action' => 'cookies']
         ]
-    ],
-
-    /**
-     * Google reCaptcha
-     */
-    'Captcha' => [
-        'key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-        'secret' => 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'
     ],
  ```

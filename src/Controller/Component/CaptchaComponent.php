@@ -14,9 +14,11 @@ use RuntimeException;
  *
  * Configuration:
  * --------------------------------------------------------------------
- * 'Captcha' => [
- *     'key' => 'your site key',
- *     'secret' => 'your secret key'
+ * 'Frontend' => [
+ *     'captcha' => [
+ *         'key' => 'your site key',
+ *         'secret' => 'your secret key'
+ *     ]
  * ],
  *
  * Usage:
@@ -31,7 +33,7 @@ use RuntimeException;
  * }
  *
  * @author Flavius
- * @version 1.1
+ * @version 1.2
  */
 class CaptchaComponent extends Component
 {
@@ -45,7 +47,7 @@ class CaptchaComponent extends Component
      */
     public function verify() {
         // check for config
-        $secret = Configure::read('Captcha.secret');
+        $secret = Configure::read('Frontend.captcha.secret');
         if(!$secret)
             throw new RuntimeException("Captcha Component: Error in configuration, secret key not found");
 

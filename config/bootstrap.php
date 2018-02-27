@@ -22,7 +22,8 @@ if(PHP_SAPI === 'cli'
 // attach middleware
 EventManager::instance()->on('Server.buildMiddleware', function ($event, $queue) {
     // EmailErrorHandlerMiddleware
-    $queue->insertAt(0, EmailErrorHandlerMiddleware::class);
+    $queue->insertBefore('Cake\Routing\Middleware\AssetMiddleware',
+        EmailErrorHandlerMiddleware::class);
 
     // CsrfProtectionMiddleware
     if(Configure::read('Frontend.security.enabled'))
