@@ -2,14 +2,14 @@
  * Captcha widget
  *
  * @author Flavius
- * @version 1.0
+ * @version 1.1
  */
 div.captcha-widget {
 }
 
     div.captcha-widget > div {
         width: 155px;
-        height: 50px;
+        height: 48px;
         margin: 0 0 1rem;
         background: #f9f9f9 url('../../img/widgets/captcha-loading.gif') center center no-repeat;
         border: 1px solid #cacaca;
@@ -21,7 +21,7 @@ div.captcha-widget {
             margin-left: -1px;
             overflow: hidden;
             width: 155px !important;
-            height: 50px !important;
+            height: 48px !important;
         }
 
             div.captcha-widget > div > div > div {
