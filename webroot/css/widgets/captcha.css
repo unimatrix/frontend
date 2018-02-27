@@ -2,7 +2,7 @@
  * Captcha widget
  *
  * @author Flavius
- * @version 1.1
+ * @version 1.2
  */
 div.captcha-widget {
 }
@@ -13,6 +13,7 @@ div.captcha-widget {
         margin: 0 0 1rem;
         background: #f9f9f9 url('../../img/widgets/captcha-loading.gif') center center no-repeat;
         border: 1px solid #cacaca;
+        box-sizing: content-box;
     }
 
         div.captcha-widget > div > div {
@@ -22,6 +23,7 @@ div.captcha-widget {
             overflow: hidden;
             width: 155px !important;
             height: 48px !important;
+            box-sizing: content-box;
         }
 
             div.captcha-widget > div > div > div {
