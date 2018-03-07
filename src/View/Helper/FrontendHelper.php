@@ -12,11 +12,14 @@ use Cake\Utility\Text;
  * it also handles some custom frontend logic and template correction + helper functions
  *
  * @author Flavius
- * @version 1.2
+ * @version 1.3
  */
 class FrontendHelper extends Helper {
     // load other helpers
     public $helpers = ['Text', 'Html', 'Minify'];
+
+    // the cache
+    protected $cache = [];
 
     // default config
     protected $_defaultConfig = [
@@ -58,9 +61,11 @@ class FrontendHelper extends Helper {
         $view->loadHelper('Unimatrix/Cake.Minify', $this->_config['Minify']);
         $view->loadHelper('Unimatrix/Cake.Form', $this->_config['Form']);
 
-        // set locale based on session
-        // this is here because error doesnt pass through app controller where
-        // we load the frontend component, so if that never gets loaded do it here
+        /** 
+         * Set locale based on session
+         * This is here because error doesnt pass through app controller where
+         * we load the frontend component, so if that never gets loaded do it here
+         */
         if($session->check('App.locale'))
             I18n::setLocale($session->read('App.locale'));
 
@@ -79,6 +84,17 @@ class FrontendHelper extends Helper {
         $text = html_entity_decode($text);
 
         return $this->Text->truncate($text, 150, ['exact' => false]);
+    }
+
+    /**
+     * Get width and height from identity (picture)
+     * @param string $url
+     */
+    public function identityInfo($url) {
+        if(!isset($this->cache[$url]))
+            $this->cache[$url] = getimagesize($url);
+
+        return [$this->cache[$url][0], $this->cache[$url][1]];
     }
 
     /**
