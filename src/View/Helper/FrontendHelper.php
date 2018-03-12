@@ -90,11 +90,15 @@ class FrontendHelper extends Helper {
      * Get width and height from identity (picture)
      * @param string $url
      */
-    public function identityInfo($url) {
+    public function identityInfo($url, $what = null) {
         if(!isset($this->cache[$url]))
             $this->cache[$url] = getimagesize($url);
 
-        return [$this->cache[$url][0], $this->cache[$url][1]];
+        switch($what) {
+            case 'width': return $this->cache[$url][0]; break;
+            case 'height': return $this->cache[$url][1]; break;
+            default: return $this->cache[$url]; break;
+        }
     }
 
     /**

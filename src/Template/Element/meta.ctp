@@ -11,8 +11,8 @@ $keywords = $this->fetch('keywords') ? $this->fetch('keywords') : ($this->fetch(
 $description = $this->fetch('description') ? $this->Frontend->seoDescription($this->fetch('description')) : ($this->fetch('seo_description') ? $this->fetch('seo_description') : $site);
 $canonical = $this->fetch('canonical') ? $this->fetch('canonical') : $this->Url->build(null, true);
 $identity = $this->fetch('identity') ? $this->fetch('identity') : $this->Url->build('/img/identity.png', true);
-$identityWidth = $this->fetch('identityWidth') ? $this->fetch('identityWidth') : ($this->fetch('identity') ? $this->Frontend->identityInfo($this->fetch('identity'))[0] : 600);
-$identityHeight = $this->fetch('identityHeight') ? $this->fetch('identityHeight') : ($this->fetch('identity') ? $this->Frontend->identityInfo($this->fetch('identity'))[1] : 314);
+$identityWidth = $this->fetch('identityWidth') ? $this->fetch('identityWidth') : ($this->fetch('identity') ? $this->Frontend->identityInfo($this->fetch('identity'), 'width') : 600);
+$identityHeight = $this->fetch('identityHeight') ? $this->fetch('identityHeight') : ($this->fetch('identity') ? $this->Frontend->identityInfo($this->fetch('identity'), 'height') : 314);
 $classification = $this->fetch('classification') ? $this->fetch('classification') : 'website';
 
 // charset
