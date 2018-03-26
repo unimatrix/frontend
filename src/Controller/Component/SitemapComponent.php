@@ -210,8 +210,8 @@ class SitemapComponent extends Component
 
     /**
      * SimpleXML helper, append 2 objects together
-     * @param SimpleXML $to
-     * @param SimpleXML $from
+     * @param \SimpleXMLElement $to
+     * @param \SimpleXMLElement $from
      */
     protected function _append(&$to, $from) {
         // go through each kid

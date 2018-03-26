@@ -61,7 +61,7 @@ class FrontendHelper extends Helper {
         $view->loadHelper('Unimatrix/Cake.Minify', $this->_config['Minify']);
         $view->loadHelper('Unimatrix/Cake.Form', $this->_config['Form']);
 
-        /** 
+        /**
          * Set locale based on session
          * This is here because error doesnt pass through app controller where
          * we load the frontend component, so if that never gets loaded do it here
@@ -87,10 +87,8 @@ class FrontendHelper extends Helper {
     }
 
     /**
-     * Get information from identity (picture)
+     * Get width and height from identity (picture)
      * @param string $url
-     * @param string $what
-     * @return string
      */
     public function identityInfo($url, $what = null) {
         if(!isset($this->cache[$url]))
