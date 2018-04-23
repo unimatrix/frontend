@@ -20,9 +20,10 @@ The recommended way to install composer packages is:
 composer require unimatrix/frontend:^3.0
 ```
 
-Don't forget to add it to bootstrap
+Don't forget to load it in your bootstrap function inside `Application.php`
 ```
-Plugin::load('Unimatrix/Frontend', ['bootstrap' => true]);
+    $this->addPlugin('Unimatrix/Cake');
+    $this->addPlugin('Unimatrix/Frontend');
 ```
 
 ## Configuration
@@ -40,9 +41,10 @@ Of course you have to add some things in your `config/app.php`
         'security' => [
             'enabled' => true,
             'ssl' => false,
-            'exceptions' => [ // skip CSRF verifications for these requests
+            'skip' => [ // skip CSRF verifications for these requests
                 ['controller' => 'API', 'action' => 'batch'], // skip the batch action from the API controller
-                ['controller' => 'Amazon'] // skip the whole amazon controller
+                ['controller' => 'Amazon'], // skip the whole amazon controller
+                ['plugin => 'Backend'] // skip the whole backend plugin
             ]
         ],
         'seo' => [

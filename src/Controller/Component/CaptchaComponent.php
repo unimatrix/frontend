@@ -59,7 +59,7 @@ class CaptchaComponent extends Component
             $response = $http->post($this->_api, [
                 'secret' => $secret,
                 'response' => $recaptcha,
-                'remoteip' => $this->getController()->request->clientIP()
+                'remoteip' => $this->getController()->getRequest()->clientIP()
             ]);
 
             // got expected json response?
@@ -79,7 +79,7 @@ class CaptchaComponent extends Component
      */
     private function requestRecaptcha() {
         $return = false;
-        $request = $this->getController()->request;
+        $request = $this->getController()->getRequest();
         if($request->is('post')) {
             $body = $request->getParsedBody();
             if(is_array($body)) {
@@ -95,7 +95,7 @@ class CaptchaComponent extends Component
 
                 // request changed, overwrite request
                 if($dirty)
-                    $this->getController()->request = $request->withParsedBody($body);
+                    $this->getController()->setRequest($request->withParsedBody($body));
             }
         }
 

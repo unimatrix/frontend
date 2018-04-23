@@ -17,14 +17,15 @@ use Cake\Http\Middleware\CsrfProtectionMiddleware as CakeCsrfProtectionMiddlewar
  * ---------------------------------------------------------------------------------
  * 'Frontend' => [
  *     'security' => [
- *         'exceptions' => [
+ *         'skip' => [
  *             ['controller' => 'API', 'action' => 'batch'], // skip the batch action from the API controller
- *             ['controller' => 'Amazon'] // skip the whole amazon controller
+ *             ['controller' => 'Amazon'], // skip the whole amazon controller
+ *             ['plugin => 'Backend'] // skip the whole backend plugin
  *         ]
  * ---------------------------------------------------------------------------------
  *
  * @author Flavius
- * @version 1.0
+ * @version 2.0
  */
 class CsrfProtectionMiddleware extends CakeCsrfProtectionMiddleware
 {
@@ -46,20 +47,16 @@ class CsrfProtectionMiddleware extends CakeCsrfProtectionMiddleware
      * @see \Cake\Http\Middleware\CsrfProtectionMiddleware::__invoke()
      */
     public function __invoke(ServerRequest $request, Response $response, $next) {
-        $exceptions = [];
+        // compute skips & params
+        $skips = [];
         $params = $request->getAttribute('params');
-        if(Configure::check('Frontend.security.exceptions'))
-            $exceptions = Configure::read('Frontend.security.exceptions');
+        if(Configure::check('Frontend.security.skip'))
+            $skips = Configure::read('Frontend.security.skip');
 
-        // skip verification on these exceptions
-        foreach($exceptions as $exception) {
-            if(isset($exception['controller']) && isset($exception['action'])
-                && $exception['controller'] == $params['controller'] && $exception['action'] == $params['action'])
-                    return $next($request, $response);
-            elseif(isset($exception['controller'])
-                && $exception['controller'] == $params['controller'])
-                    return $next($request, $response);
-        }
+        // got a match? skip CSRF :)
+        foreach($skips as $skip)
+            if(array_intersect_assoc($params, $skip) === $skip)
+                return $next($request, $response);
 
         // continue normally
         return parent::__invoke($request, $response, $next);

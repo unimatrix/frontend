@@ -44,7 +44,7 @@ class FrontendComponent extends Component
 
         // we need these
         $controller = $this->getController();
-        $session = $controller->request->getSession();
+        $session = $controller->getRequest()->getSession();
 
         // load security
         if(Configure::read('Frontend.security.enabled')) {

@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Unimatrix\\Frontend\\": "src"
+            "Unimatrix\\Frontend\\": "src/"
         }
     }
 }
