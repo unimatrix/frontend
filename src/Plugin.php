@@ -16,6 +16,12 @@ use Unimatrix\Frontend\Http\Middleware\CsrfProtectionMiddleware;
 class Plugin extends BasePlugin
 {
     /**
+     * Plugin name
+     * @var string
+     */
+    protected $name = 'Unimatrix/Frontend';
+
+    /**
      * Should this plugin be activated
      * @return bool
      */

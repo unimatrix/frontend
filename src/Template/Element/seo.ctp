@@ -10,14 +10,8 @@ $seo = Configure::read('Frontend.seo');
 foreach($seo as $idx => $one) {
     if(is_array($one)) {
         foreach($one as $jdx => $two)
-            designate($this, $jdx, $two, $idx);
-
-    } else designate($this, $idx, $one);
-}
-
-// designate
-function designate($self, $key, $value, $prefix = 'seo') {
-    $self->assign($prefix . '_' . $key, $value);
+            $this->assign($idx . '_' . $jdx, $two);
+    } else $this->assign('seo_' . $idx, $one);
 }
 
 // don't use cake default template path as title

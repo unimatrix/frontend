@@ -13,6 +13,18 @@ use Cake\I18n\Time;
  * Sitemap component
  * Basic to Advanced Sitemap implementation
  *
+ * Installation
+ * --------------------------------------------------
+ * Router::scope('/', function (RouteBuilder $routes) {
+ *     ....
+ *     $routes->connect('/sitemap.xml', ['controller' => 'Index', 'action' => 'sitemap']);
+ * });
+ *
+ * and in your Index controller:
+ * public function sitemap() {
+ *     return $this->getResponse()->withType('application/xml')->withStringBody($this->Sitemap->render());
+ * }
+ *
  * Example of routes configured for sitemap
  * --------------------------------------------------
  * $routes->connect('/', ['controller' => 'Index', 'action' => 'index'], ['sitemap' => ['modified' => time(), 'frequency' => 'daily', 'priority' => '1.0']]);

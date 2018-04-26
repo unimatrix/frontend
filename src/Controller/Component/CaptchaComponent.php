@@ -26,7 +26,7 @@ use RuntimeException;
  * $this->loadComponent('Unimatrix/Frontend.Captcha');
  *
  * // then in your controller action
- * if($this->request->is('post')) {
+ * if($this->getRequest()->is('post')) {
  *     if($this->Captcha->verify()) {
  *         ...
  *     } else $this->Flash->error('Captcha invalid')
@@ -73,8 +73,7 @@ class CaptchaComponent extends Component
     }
 
     /**
-     * Request recaptcha value
-     * Also removes it from the request
+     * Consumes request recaptcha value
      * @return boolean|string
      */
     private function requestRecaptcha() {

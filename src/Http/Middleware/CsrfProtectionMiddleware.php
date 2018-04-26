@@ -20,7 +20,7 @@ use Cake\Http\Middleware\CsrfProtectionMiddleware as CakeCsrfProtectionMiddlewar
  *         'skip' => [
  *             ['controller' => 'API', 'action' => 'batch'], // skip the batch action from the API controller
  *             ['controller' => 'Amazon'], // skip the whole amazon controller
- *             ['plugin => 'Backend'] // skip the whole backend plugin
+ *             ['plugin => 'Rest'] // skip the whole REST plugin
  *         ]
  * ---------------------------------------------------------------------------------
  *

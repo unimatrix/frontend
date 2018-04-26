@@ -11,16 +11,16 @@ use Cake\Controller\Component;
  * This component loads all other necesary stuff for the frontend,
  * it also handles some custom frontend logic and request filtering
  *
- * To use switch between languages use the following in your controller:
+ * To use switch between languages use the following in your controller: (asuming 'ro' is default)
  * ---------------------------------------------------------------------
- *     public function ro() {
- *         $this->request->getSession()->delete('App.locale');
- *         $this->redirect($this->request->referer());
- *     }
- *     public function en() {
- *         $this->request->getSession()->write('App.locale', 'en_US');
- *         $this->redirect($this->request->referer());
- *     }
+ * public function ro() {
+ *     $this->getRequest()->getSession()->delete('App.locale');
+ *     $this->redirect($this->getRequest()->referer());
+ * }
+ * public function en() {
+ *     $this->getRequest()->getSession()->write('App.locale', 'en_US');
+ *     $this->redirect($this->getRequest()->referer());
+ * }
  * ---------------------------------------------------------------------
  *
  * @author Flavius
