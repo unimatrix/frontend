@@ -76,7 +76,7 @@ use Cake\I18n\Time;
  * --------------------------------------------------
  *
  * @author Flavius
- * @version 1.1
+ * @version 1.2
  */
 class SitemapComponent extends Component
 {
@@ -89,8 +89,8 @@ class SitemapComponent extends Component
     ];
 
     // url storage & root
-    protected $_url = [];
-    protected $_root = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="%s"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>';
+    protected $_urls = [];
+    public $root = '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="%s"?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>';
 
     /**
      * Render sitemap
@@ -101,11 +101,11 @@ class SitemapComponent extends Component
         $this->RequestHandler->respondAs('xml');
 
         // start xml & build from routes
-        $xml = Xml::build(sprintf($this->_root, $this->_path('Unimatrix/Frontend.xsl/sitemap.xsl')));
+        $xml = Xml::build(sprintf($this->root, $this->_path('Unimatrix/Frontend.xsl/sitemap.xsl')));
         $this->_router();
 
         // append urls & return
-        $this->_append($xml, Xml::fromArray(['urlset' => ['url' => $this->_url]]));
+        $this->append($xml, Xml::fromArray(['urlset' => ['url' => $this->_urls]]));
         return $xml->asXML();
     }
 
@@ -129,7 +129,7 @@ class SitemapComponent extends Component
                 if($callback)
                     if(is_array($callback))
                         foreach($callback as $item)
-                            $this->_url[] = [
+                            $this->_urls[] = [
                                 'loc' => $item['url'],
                                 'lastmod' => $item['modified'],
                                 'changefreq' => $changefreq,
@@ -152,10 +152,10 @@ class SitemapComponent extends Component
                     default: $lastmod = $route->options['sitemap']['modified'];
                 }
             } else $lastmod = $this->_file($route);
-            $lastmod = (new Time($lastmod ?: time()))->timezone(date_default_timezone_get())->toAtomString();
+            $lastmod = (new Time($lastmod ?: null))->timezone(date_default_timezone_get())->toAtomString();
 
             // add record
-            $this->_url[] = [
+            $this->_urls[] = [
                 'loc' => Router::url($route->template, true),
                 'lastmod' => $lastmod,
                 'changefreq' => $changefreq,
@@ -173,7 +173,7 @@ class SitemapComponent extends Component
     protected function _callback($route, $dynamic = false) {
         // default variables
         $class = "App\Controller\\{$route->defaults['controller']}Controller";
-        $object = new $class();
+        $object = class_exists($class) ? new $class() : false;
         $method = ($dynamic ? 'dynamic' : 'index') . '_sitemap';
 
         // return
@@ -225,7 +225,7 @@ class SitemapComponent extends Component
      * @param \SimpleXMLElement $to
      * @param \SimpleXMLElement $from
      */
-    protected function _append(&$to, $from) {
+    public function append(&$to, $from) {
         // go through each kid
         foreach($from->children() as $child) {
             $temp = $to->addChild($child->getName(), (string) $child);
@@ -233,7 +233,7 @@ class SitemapComponent extends Component
                 $temp->addAttribute($key, $value);
 
             // perform append
-            $this->_append($temp, $child);
+            $this->append($temp, $child);
         }
     }
 }

@@ -44,7 +44,7 @@ Of course you have to add some things in your `config/app.php`
             'skip' => [ // skip CSRF verifications for these requests
                 ['controller' => 'API', 'action' => 'batch'], // skip the batch action from the API controller
                 ['controller' => 'Amazon'], // skip the whole amazon controller
-                ['plugin => 'Rest'] // skip the whole REST plugin
+                ['plugin => 'Backend'] // skip the whole backend plugin
             ]
         ],
         'seo' => [

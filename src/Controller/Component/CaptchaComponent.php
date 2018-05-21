@@ -33,7 +33,7 @@ use RuntimeException;
  * }
  *
  * @author Flavius
- * @version 1.2
+ * @version 1.3
  */
 class CaptchaComponent extends Component
 {
@@ -55,7 +55,7 @@ class CaptchaComponent extends Component
         $recaptcha = $this->requestRecaptcha();
         if($recaptcha) {
             // perform the request to google
-            $http = new Client(['ssl_verify_peer' => false]);
+            $http = $this->getClient();
             $response = $http->post($this->_api, [
                 'secret' => $secret,
                 'response' => $recaptcha,
@@ -64,12 +64,22 @@ class CaptchaComponent extends Component
 
             // got expected json response?
             if($response->json)
-                if($response->json['success'])
+                if(isset($response->json['success']) && $response->json['success'])
                     return true;
         }
 
         // return false by default
         return false;
+    }
+
+    /**
+     * Set the HTTP client that will handle the request
+     * @return \Cake\Http\Client
+     */
+    protected function getClient() {
+        // @codeCoverageIgnoreStart
+        return new Client(['ssl_verify_peer' => false]);
+        // @codeCoverageIgnoreEnd
     }
 
     /**
