@@ -1,13 +1,15 @@
 # Unimatrix Frontend
 
-[![Version](https://img.shields.io/packagist/v/unimatrix/frontend.svg?style=flat-square)](https://packagist.org/packages/unimatrix/frontend)
-[![Total Downloads](https://img.shields.io/packagist/dt/unimatrix/frontend.svg?style=flat-square)](https://packagist.org/packages/unimatrix/frontend/stats)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/unimatrix/frontend/master/LICENSE)
+[![Build Status](https://api.travis-ci.org/unimatrix/frontend.svg?branch=master)](https://travis-ci.org/unimatrix/frontend)
+[![Coverage Status](https://codecov.io/gh/unimatrix/frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/unimatrix/frontend)
+[![Latest Stable Version](https://poser.pugx.org/unimatrix/frontend/v/stable.svg)](https://packagist.org/packages/unimatrix/frontend)
+[![License](https://poser.pugx.org/unimatrix/frontend/license.svg)](https://packagist.org/packages/unimatrix/frontend)
+[![Total Downloads](https://poser.pugx.org/unimatrix/frontend/d/total.svg)](https://packagist.org/packages/unimatrix/frontend)
 
 Frontend for CakePHP 3.6
 
 ## Requirements
-* PHP >= 7.2
+* PHP >= 7.1
 * CakePHP >= 3.6
 
 ## Installation

@@ -6,10 +6,6 @@ php:
 
 dist: trusty
 
-env:
-  global:
-    - DEFAULT=1
-
 matrix:
   fast_finish: true
 
