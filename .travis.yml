@@ -1,26 +1,34 @@
 language: php
 
 php:
-  - 7.0
   - 7.1
   - 7.2
+
+dist: trusty
+
+env:
+  global:
+    - DEFAULT=1
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
-      env: COVERAGE=1
+    - php: 7.1
+      env: DEFAULT=0
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - sudo locale-gen da_DK
 
 before_script:
-  - if [[ $COVERAGE != 1 ]]; then phpenv config-rm xdebug.ini; fi
-  - composer update --no-interaction
+  - composer install --prefer-dist --no-interaction
 
 script:
-  - if [[ $COVERAGE == 1 ]]; then vendor/bin/phpunit --coverage-clover=clover.xml; fi
-  - if [[ $COVERAGE != 1 ]]; then vendor/bin/phpunit; fi
+  - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION = 7.2 ]]; then export CODECOVERAGE=1; phpdbg -qrr vendor/bin/phpunit --coverage-clover=clover.xml; fi
+  - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION != 7.2 ]]; then vendor/bin/phpunit; fi
 
 after_success:
-  - if [[ $COVERAGE == 1 ]]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION = 7.2 ]]; then bash <(curl -s https://codecov.io/bash); fi
 
 notifications:
   email: false
