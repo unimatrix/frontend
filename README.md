@@ -3,7 +3,7 @@
 [![Build Status](https://api.travis-ci.org/unimatrix/frontend.svg?branch=master)](https://travis-ci.org/unimatrix/frontend)
 [![Coverage Status](https://codecov.io/gh/unimatrix/frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/unimatrix/frontend)
 [![Latest Stable Version](https://poser.pugx.org/unimatrix/frontend/v/stable.svg)](https://packagist.org/packages/unimatrix/frontend)
-[![License](https://poser.pugx.org/unimatrix/frontend/license.svg)](https://packagist.org/packages/unimatrix/frontend)
+[![License](https://poser.pugx.org/unimatrix/frontend/license.svg)](https://github.com/unimatrix/frontend/blob/master/LICENSE)
 [![Total Downloads](https://poser.pugx.org/unimatrix/frontend/d/total.svg)](https://packagist.org/packages/unimatrix/frontend)
 
 Frontend for CakePHP 3.6
