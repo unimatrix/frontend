@@ -64,6 +64,6 @@ class CaptchaWidgetTest extends TestCase
 
     public function testSecureFields() {
         $input = new CaptchaWidget($this->templates);
-        $this->assertArraySubset(['g-recaptcha-response'], $input->secureFields([]));
+        $this->assertEquals(['g-recaptcha-response'], $input->secureFields([]));
     }
 }

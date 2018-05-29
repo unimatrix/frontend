@@ -35,6 +35,6 @@ class FrontendComponentTest extends TestCase
         $this->assertInstanceOf(SitemapComponent::class, $component->getController()->Sitemap);
 
         $this->assertEquals($locale, I18n::getLocale());
-        $this->assertArraySubset(['*'], $component->getController()->Security->getConfig('requireSecure'));
+        $this->assertEquals(['*'], $component->getController()->Security->getConfig('requireSecure'));
     }
 }

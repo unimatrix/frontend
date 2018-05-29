@@ -65,7 +65,7 @@ class FrontendHelperTest extends TestCase
         imagedestroy($image);
         fseek($resource, 0);
         $file = 'data://image/png;base64,' . base64_encode(stream_get_contents($resource));
-        $this->assertArraySubset(getimagesize($file), $this->helper->identityInfo($file));
+        $this->assertEquals(getimagesize($file), $this->helper->identityInfo($file));
         $this->assertEquals($width, $this->helper->identityInfo($file, 'width'));
         $this->assertEquals($height, $this->helper->identityInfo($file, 'height'));
 
