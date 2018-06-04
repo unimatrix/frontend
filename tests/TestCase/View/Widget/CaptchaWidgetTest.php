@@ -31,6 +31,7 @@ class CaptchaWidgetTest extends TestCase
 
     public function testNoKey() {
         $this->expectException(\RuntimeException::class);
+
         $input = new CaptchaWidget($this->templates);
         $input->render($this->data, $this->context);
     }
@@ -47,6 +48,7 @@ class CaptchaWidgetTest extends TestCase
             'render' => 'image',
         ];
         $result = $text->render($data, $this->context);
+
         $expected = [
             ['div' => ['class' => 'captcha-widget']],
                 ['div' => [
