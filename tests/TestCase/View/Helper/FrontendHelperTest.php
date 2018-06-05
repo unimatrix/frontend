@@ -84,5 +84,6 @@ class FrontendHelperTest extends TestCase
             'bcc' => 'bcc@something.com',
         ]);
         $this->assertRegExp($expected, $result);
+        Router::reload();
     }
 }

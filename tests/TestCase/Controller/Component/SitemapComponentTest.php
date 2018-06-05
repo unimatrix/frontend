@@ -22,6 +22,11 @@ class SitemapComponentTest extends TestCase
         $this->component = new SitemapComponent($this->registry);
     }
 
+    public function tearDown() {
+        parent::tearDown();
+        Router::reload();
+    }
+
     protected function buildExpectedXML($urls = [], $style = 'http://localhost/unimatrix/frontend/xsl/sitemap.xsl') {
         $expected = Xml::build(sprintf($this->component->root, $style));
         $this->component->append($expected, Xml::fromArray(['urlset' => ['url' => $urls]]));
